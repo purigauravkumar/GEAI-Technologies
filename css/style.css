@@ -1380,14 +1380,6 @@ a:focus-visible {
     }
 
     .hero {
-        background:
-            linear-gradient(
-                90deg,
-                rgba(8, 9, 11, 0.96) 0%,
-                rgba(8, 9, 11, 0.82) 42%,
-                rgba(8, 9, 11, 0.30) 100%
-            ),
-            url("../assets/images/server-room.jpg") center / cover no-repeat,
-            var(--color-background);
+        background: var(--color-background);
     }
 }
