@@ -136,20 +136,6 @@ a:focus-visible {
     overflow: hidden;
 
     background-color: var(--color-background);
-    background-image:
-        linear-gradient(
-            90deg,
-            rgba(8, 9, 11, 0.96) 0%,
-            rgba(8, 9, 11, 0.82) 42%,
-            rgba(8, 9, 11, 0.30) 100%
-        ),
-        linear-gradient(
-            0deg,
-            rgba(8, 9, 11, 0.85) 0%,
-            transparent 35%
-        ),
-        
-    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -1155,23 +1141,22 @@ a:focus-visible {
     position: absolute;
     inset: 0;
     z-index: 0;
-
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-
+    filter: brightness(0.4);
     pointer-events: none;
 }
 
-/* Darken the video so the text remains readable */
+/* Readability overlay above the video; content remains on top. */
 .hero::before {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
-
     background:
         linear-gradient(
             90deg,
@@ -1186,293 +1171,13 @@ a:focus-visible {
         );
 }
 
-/* Keep hero content above the video and overlay */
 .hero-content,
 .hero-indicator {
     position: relative;
     z-index: 2;
 }
 
-/* Service card visuals */
-.service-visual {
-    width: 100%;
-    height: 190px;
-    margin-bottom: 26px;
-    overflow: hidden;
-    background: #11151b;
-    border: 1px solid var(--color-border);
-}
-
-.service-visual img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.5s ease;
-}
-
-/* Keep the Hyper-V illustration fully visible */
-.service-visual-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.service-visual-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-/* Subtle hover effect */
-.service-item:hover .service-visual:not(.service-visual-logo) img {
-    transform: scale(1.04);
-}
-
-/* Mobile image sizing */
-@media (max-width: 600px) {
-    .service-visual {
-        height: 170px;
-        margin-bottom: 20px;
-    }
-}
-
-/* About section infrastructure image */
-.about-image {
-    position: relative;
-    width: 100%;
-    height: 230px;
-    margin-top: 28px;
-    overflow: hidden;
-    background: #11151b;
-    border: 1px solid var(--color-border);
-    box-sizing: border-box;
-}
-
-.about-image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 40%;
-    opacity: 0.85;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-}
-
-.about-image:hover img {
-    transform: scale(1.03);
-    opacity: 1;
-}
-
-.about-image-label {
-    position: absolute;
-    left: 14px;
-    bottom: 14px;
-    z-index: 1;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    color: #fff;
-    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
-}
-
-/* Technology & Platforms */
-.technology-section {
-    padding: 110px 10%;
-    background: var(--color-background);
-    border-top: 1px solid var(--color-border);
-}
-
-.technology-heading {
-    max-width: 650px;
-    margin-bottom: 50px;
-}
-
-.technology-heading h2 {
-    margin-top: 20px;
-    margin-bottom: 22px;
-}
-
-.technology-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    border-top: 1px solid var(--color-border);
-    border-left: 1px solid var(--color-border);
-}
-
-.technology-card {
-    min-width: 0;
-    padding: 28px 22px;
-    border-right: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-    transition: background-color 0.3s ease;
-}
-
-.technology-card:hover {
-    background-color: rgba(255, 255, 255, 0.035);
-}
-
-.technology-logo {
-    height: 95px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 25px;
-}
-
-.technology-logo img {
-    display: block;
-    max-width: 100%;
-    max-height: 70px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-}
-
-.technology-card h3 {
-    margin: 0 0 9px;
-    font-size: 17px;
-}
-
-.technology-card p {
-    margin: 0;
-    color: var(--color-muted);
-    font-size: 13px;
-    line-height: 1.6;
-}
-
-/* Tablet */
-@media (max-width: 900px) {
-    .technology-section {
-        padding: 90px 7%;
-    }
-
-    .technology-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-    .technology-section {
-        padding: 75px 6%;
-    }
-
-    .technology-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .technology-card {
-        padding: 20px 15px;
-    }
-
-    .technology-logo {
-        height: 75px;
-        margin-bottom: 18px;
-    }
-
-    .technology-logo img {
-        max-height: 55px;
-    }
-
-    .technology-card h3 {
-        font-size: 15px;
-    }
-}
-
-/* About — Virtualization visual */
-.about-virtualization-visual {
-    position: relative;
-    width: 100%;
-    height: 210px;
-    margin-top: 30px;
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-    background: #11151b;
-}
-
-.about-virtualization-visual img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.5s ease;
-}
-
-.about-virtualization-visual:hover img {
-    transform: scale(1.03);
-}
-
-.about-visual-label {
-    position: absolute;
-    left: 14px;
-    bottom: 12px;
-    color: #fff;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.9);
-}
-
-@media (max-width: 600px) {
-    .about-virtualization-visual {
-        height: 180px;
-    }
-}
-
-/* Hero video background */
-.hero {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    background-color: var(--color-background);
-}
-
-.hero-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 0;
-    filter: brightness(0.4);
-    pointer-events: none;
-}
-
-/* Keep hero content above the video */
-.hero > :not(.hero-video) {
-    position: relative;
-    z-index: 1;
-}
-
-/* Bottom image section */
-.bottom-image-section {
-    width: 100%;
-    height: 320px;
-    overflow: hidden;
-    background: var(--color-background);
-    border-top: 1px solid var(--color-border);
-}
-
-.bottom-image-section img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    opacity: 0.8;
-}
-
-@media (max-width: 600px) {
-    .bottom-image-section {
-        height: 220px;
-    }
-}
-
-/* Contact section background image */
+/* Dark server-room background in the Contact section. */
 #contact {
     background-image:
         linear-gradient(
@@ -1483,4 +1188,23 @@ a:focus-visible {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+/* Fallback for visitors who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+    .hero-video {
+        display: none;
+    }
+
+    .hero {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(8, 9, 11, 0.96) 0%,
+                rgba(8, 9, 11, 0.82) 42%,
+                rgba(8, 9, 11, 0.30) 100%
+            ),
+            url("../assets/images/server-room.jpg") center / cover no-repeat,
+            var(--color-background);
+    }
 }
