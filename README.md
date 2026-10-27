@@ -31,7 +31,7 @@ After changes are merged into the configured publishing branch, check **Actions*
 
 ## Notes
 
-- The hero video is muted and loops; `assets/images/server-room.jpg` is its poster and is also used as the Contact section background.
+- The hero video is muted, loops, and has no poster/fallback image by design. `assets/images/server-room.jpg` is used only as the Contact section background.
 - The Contact button uses a `mailto:` link. It opens the visitor's configured email application; it is not a server-side contact form.
 - GitHub Pages serves static files. Persistent forms, logins, shared likes, and database-backed features require a backend or external service.
 - Google Fonts are loaded remotely; system font fallbacks are provided.
