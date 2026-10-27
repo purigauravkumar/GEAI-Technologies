@@ -136,19 +136,6 @@ a:focus-visible {
     overflow: hidden;
 
     background-color: var(--color-background);
-    background-image:
-        linear-gradient(
-            90deg,
-            rgba(8, 9, 11, 0.96) 0%,
-            rgba(8, 9, 11, 0.82) 42%,
-            rgba(8, 9, 11, 0.30) 100%
-        ),
-        linear-gradient(
-            0deg,
-            rgba(8, 9, 11, 0.85) 0%,
-            transparent 35%
-        ),
-        
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -358,18 +345,6 @@ a:focus-visible {
 
         background-position: 58% center;
 
-        background-image:
-            linear-gradient(
-                90deg,
-                rgba(8, 9, 11, 0.90),
-                rgba(8, 9, 11, 0.58)
-            ),
-            linear-gradient(
-                0deg,
-                rgba(8, 9, 11, 0.90),
-                transparent 70%
-            ),
-            url("../assets/images/server-room.jpg");
     }
 
     .eyebrow {
@@ -1212,21 +1187,6 @@ a:focus-visible {
     transition: transform 0.5s ease;
 }
 
-/* Keep the Hyper-V illustration fully visible */
-.service-visual-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.service-visual-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
 /* Subtle hover effect */
 .service-item:hover .service-visual:not(.service-visual-logo) img {
     transform: scale(1.04);
@@ -1382,96 +1342,6 @@ a:focus-visible {
     }
 }
 
-/* About — Virtualization visual */
-.about-virtualization-visual {
-    position: relative;
-    width: 100%;
-    height: 210px;
-    margin-top: 30px;
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-    background: #11151b;
-}
-
-.about-virtualization-visual img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.5s ease;
-}
-
-.about-virtualization-visual:hover img {
-    transform: scale(1.03);
-}
-
-.about-visual-label {
-    position: absolute;
-    left: 14px;
-    bottom: 12px;
-    color: #fff;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.9);
-}
-
-@media (max-width: 600px) {
-    .about-virtualization-visual {
-        height: 180px;
-    }
-}
-
-/* Hero video background */
-.hero {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    background-color: var(--color-background);
-}
-
-.hero-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 0;
-    filter: brightness(0.4);
-    pointer-events: none;
-}
-
-/* Keep hero content above the video */
-.hero > :not(.hero-video) {
-    position: relative;
-    z-index: 1;
-}
-
-/* Bottom image section */
-.bottom-image-section {
-    width: 100%;
-    height: 320px;
-    overflow: hidden;
-    background: var(--color-background);
-    border-top: 1px solid var(--color-border);
-}
-
-.bottom-image-section img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    opacity: 0.8;
-}
-
-@media (max-width: 600px) {
-    .bottom-image-section {
-        height: 220px;
-    }
-}
-
 /* Contact section background image */
 #contact {
     background-image:
@@ -1483,4 +1353,41 @@ a:focus-visible {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+/* Stack the virtualization platform logos neatly inside their card. */
+.virtualization-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12px;
+}
+
+.virtualization-logos img {
+    display: block;
+    width: auto;
+    max-width: 150px;
+    max-height: 38px;
+    object-fit: contain;
+}
+
+
+/* Honour reduced-motion preferences with the existing still server-room image. */
+@media (prefers-reduced-motion: reduce) {
+    .hero-video {
+        display: none;
+    }
+
+    .hero {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(8, 9, 11, 0.96) 0%,
+                rgba(8, 9, 11, 0.82) 42%,
+                rgba(8, 9, 11, 0.30) 100%
+            ),
+            url("../assets/images/server-room.jpg") center / cover no-repeat,
+            var(--color-background);
+    }
 }
