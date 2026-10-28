@@ -1399,3 +1399,188 @@ a:focus-visible {
         background: var(--color-background);
     }
 }
+
+/* ========================================
+   DEVICE-SPECIFIC RESPONSIVE REFINEMENTS
+   Desktop, tablet, and mobile
+======================================== */
+
+img,
+video {
+    max-width: 100%;
+}
+
+body {
+    overflow-x: clip;
+}
+
+/* Tablet: give the navigation and section spacing more room. */
+@media (min-width: 601px) and (max-width: 1000px) {
+    .site-header {
+        padding-right: 5%;
+        padding-left: 5%;
+        gap: 20px;
+    }
+
+    .main-navigation {
+        gap: clamp(14px, 2.4vw, 24px);
+    }
+
+    .brand {
+        font-size: clamp(20px, 2.6vw, 25px);
+    }
+
+    .brand span {
+        font-size: clamp(9px, 1.2vw, 12px);
+        letter-spacing: 1.2px;
+    }
+
+    .hero {
+        padding-top: 140px;
+        padding-bottom: 100px;
+    }
+
+    .hero-video {
+        object-position: 58% center;
+    }
+
+    .service-visual {
+        height: clamp(170px, 24vw, 220px);
+    }
+
+    .about-layout {
+        gap: 48px;
+    }
+
+    .technology-card {
+        padding: 24px 18px;
+    }
+}
+
+/* Phones: use a clean two-row header and prevent cramped controls. */
+@media (max-width: 600px) {
+    .site-header {
+        min-height: 0;
+        padding: 15px 6% 13px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .brand {
+        max-width: 100%;
+        font-size: 21px;
+        gap: 7px;
+    }
+
+    .brand span {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .main-navigation {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .main-navigation a {
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .hero {
+        padding-top: 165px;
+    }
+
+    .hero-video {
+        object-position: 60% center;
+    }
+
+    .hero-actions .button {
+        max-width: 100%;
+        padding-right: 16px;
+        padding-left: 16px;
+        font-size: 12px;
+    }
+
+    .service-item {
+        min-width: 0;
+    }
+
+    .service-visual {
+        height: clamp(155px, 52vw, 220px);
+    }
+
+    .about-layout,
+    .services-grid,
+    .technology-grid {
+        min-width: 0;
+    }
+
+    .technology-card {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .virtualization-logos img {
+        max-width: 100%;
+    }
+
+    .contact-content h2 {
+        overflow-wrap: break-word;
+    }
+
+    .footer-navigation {
+        width: 100%;
+        gap: 12px 20px;
+    }
+}
+
+/* Very narrow phones, including 320px-wide screens. */
+@media (max-width: 380px) {
+    .brand {
+        font-size: 19px;
+        gap: 6px;
+    }
+
+    .brand span {
+        font-size: 8px;
+        letter-spacing: 0.7px;
+    }
+
+    .main-navigation {
+        gap: 8px;
+    }
+
+    .main-navigation a {
+        font-size: 12px;
+    }
+
+    .hero h1,
+    .section-heading h2,
+    .about-content h2,
+    .technology-heading h2,
+    .contact-content h2 {
+        font-size: clamp(35px, 10.5vw, 40px);
+    }
+
+    .technology-card {
+        padding: 17px 11px;
+    }
+
+    .technology-card h3 {
+        font-size: 14px;
+    }
+
+    .technology-card p {
+        font-size: 12px;
+    }
+
+    .focus-item h3 {
+        font-size: 15px;
+    }
+}
+
