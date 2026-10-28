@@ -30,7 +30,23 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px;
+}
+
+/* Align linked sections cleanly below the header when navigation is clicked. */
+#services,
+#about,
+#technology,
+#contact {
+    scroll-margin-top: 90px;
+}
+
+@media (max-width: 600px) {
+    #services,
+    #about,
+    #technology,
+    #contact {
+        scroll-margin-top: 112px;
+    }
 }
 
 body {
