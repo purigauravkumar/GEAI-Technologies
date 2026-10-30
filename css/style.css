@@ -1389,14 +1389,18 @@ a:focus-visible {
 }
 
 
-/* Honour reduced-motion preferences with the existing still server-room image. */
+/* Honour reduced-motion preferences and retain a still hero visual. */
 @media (prefers-reduced-motion: reduce) {
     .hero-video {
         display: none;
     }
 
     .hero {
-        background: var(--color-background);
+        background-color: var(--color-background);
+        background-image: url("../assets/images/server-room.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 }
 
