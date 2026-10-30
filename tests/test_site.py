@@ -117,7 +117,7 @@ class WebsiteSmokeTests(unittest.TestCase):
                 self.assertTrue(path.is_file(), f"Missing local file: {ref}")
 
     def test_all_local_css_assets_exist(self):
-        pattern = re.compile(r"url\\(\\s*['\\\"]?([^'\\\")]+)")
+        pattern = re.compile(r'''url\(\s*['"]?([^'")]+)''')
         for ref in pattern.findall(self.css):
             if urlsplit(ref).scheme or ref.startswith("data:"):
                 continue
@@ -149,7 +149,7 @@ class WebsiteSmokeTests(unittest.TestCase):
         self.assertEqual(self.parser.h1_count, 1, "Page should have exactly one h1")
         self.assertRegex(
             self.html,
-            r'<meta\\s+name=["\\']viewport["\\']\\s+content=["\\']width=device-width',
+            r"""<meta\s+name=["']viewport["']\s+content=["']width=device-width""",
         )
 
     def test_footer_is_outside_main_landmark(self):
@@ -161,26 +161,26 @@ class WebsiteSmokeTests(unittest.TestCase):
     def test_hero_index_remains_anchored_to_hero(self):
         self.assertRegex(
             self.css,
-            r'/\\* Keep the decorative index anchored to the hero instead of normal flow. \*/\\s*'
-            r'\\.hero-indicator\\s*\\{\\s*position:\\s*absolute',
+            r"""/\* Keep the decorative index anchored to the hero instead of normal flow\. \*/\s*
+                \.hero-indicator\s*\{\s*position:\s*absolute""".replace("\n", ""),
         )
         self.assertNotRegex(
             self.css,
-            r'\\.hero-content\\s*,\\s*\\.hero-indicator\\s*\\{\\s*position:\\s*relative',
+            r"""/\.hero-content\s*,\s*\.hero-indicator\s*\{\s*position:\s*relative""",
         )
 
     def test_phone_technology_grid_uses_one_column(self):
         self.assertRegex(
             self.css,
-            r'/\\* Final phone layout for Technology cards. \*/[\\s\\S]*?'
-            r'@media\\s*\\(max-width:\\s*600px\\)\\s*\\{[\\s\\S]*?'
-            r'\\.technology-grid\\s*\\{\\s*grid-template-columns:\\s*minmax\\(0,\\s*1fr\\)',
+            r"""/\* Final phone layout for Technology cards\. \*/[\s\S]*?
+                @media\s*\(max-width:\s*600px\)\s*\{[\s\S]*?
+                \.technology-grid\s*\{\s*grid-template-columns:\s*minmax\(0,\s*1fr\)""".replace("\n", ""),
         )
 
     def test_about_description_does_not_preserve_source_line_breaks(self):
         self.assertRegex(
             self.css,
-            r'\\.about-description\\s*\\{\\s*white-space:\\s*normal\\s*!important',
+            r"""\.about-description\s*\{\s*white-space:\s*normal\s*!important""",
         )
         self.assertIn("<br><br>", self.html)
 
