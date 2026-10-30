@@ -1779,3 +1779,34 @@ video {
     white-space: normal;
 }
 
+
+
+/* Final phone layout for Technology cards. */
+@media (max-width: 600px) {
+    .technology-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .technology-card {
+        padding: 24px 22px;
+    }
+
+    .technology-logo {
+        height: 82px;
+        margin-bottom: 18px;
+    }
+
+    .technology-card h3 {
+        font-size: 18px;
+    }
+
+    .technology-card p {
+        font-size: 15px;
+        line-height: 1.65;
+    }
+}
+
+/* The About copy uses explicit paragraph spacing, not source-code line breaks. */
+.about-description {
+    white-space: normal !important;
+}
