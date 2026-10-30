@@ -1588,3 +1588,120 @@ body {
     }
 }
 
+/* ========================================
+   FINAL RESPONSIVE SAFETY OVERRIDES
+   Prevent navigation collisions on small tablets
+   and keep narrow-phone cards readable.
+======================================== */
+
+/* The desktop header no longer has enough room at small-tablet widths. */
+@media (min-width: 601px) and (max-width: 760px) {
+    .site-header {
+        min-height: 0;
+        padding: 14px 6% 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .brand {
+        font-size: 22px;
+        gap: 7px;
+    }
+
+    .brand span {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    .main-navigation {
+        width: 100%;
+        justify-content: space-between;
+        gap: 14px;
+    }
+
+    .main-navigation a {
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .hero {
+        padding-top: 165px;
+    }
+
+    #services,
+    #about,
+    #technology,
+    #contact {
+        scroll-margin-top: 120px;
+    }
+}
+
+/* Avoid cramped two-column technology cards on very narrow phones. */
+@media (max-width: 360px) {
+    .technology-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .technology-card {
+        padding: 20px 18px;
+    }
+
+    .technology-logo {
+        justify-content: flex-start;
+    }
+
+    .virtualization-logos {
+        align-items: flex-start;
+    }
+
+    .hero-actions .button {
+        white-space: normal;
+        text-align: center;
+    }
+
+    .service-link {
+        max-width: 100%;
+        flex-wrap: wrap;
+        line-height: 1.5;
+    }
+}
+
+/* Make interactive targets comfortable on touch-first devices. */
+@media (hover: none) and (pointer: coarse) {
+    .main-navigation a,
+    .footer-navigation a,
+    .back-to-top,
+    .service-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+    }
+
+    .button {
+        min-height: 48px;
+    }
+}
+
+/* Keep media elements from introducing intrinsic-width overflow. */
+img,
+video {
+    height: auto;
+}
+
+.service-visual img,
+.about-image img,
+.hero-video {
+    height: 100%;
+}
+
+.service-item,
+.about-panel,
+.technology-card,
+.contact-content,
+.footer-main,
+.footer-bottom {
+    min-width: 0;
+}
+
