@@ -1752,3 +1752,30 @@ video {
     }
 }
 
+/* ========================================
+   MOBILE HERO LABEL + ABOUT COPY FIX
+======================================== */
+
+/* Keep the hero's decorative index fully inside the viewport. */
+@media (max-width: 760px) {
+    .hero-indicator {
+        right: 6%;
+        left: 6%;
+        bottom: 22px;
+        max-width: 88%;
+        text-align: right;
+        overflow-wrap: anywhere;
+        font-size: 10px;
+        letter-spacing: 1.2px;
+    }
+
+    .hero {
+        padding-bottom: 120px;
+    }
+}
+
+/* Source-code line wrapping must not create forced breaks in this paragraph. */
+.about-description {
+    white-space: normal;
+}
+
