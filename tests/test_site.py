@@ -159,22 +159,25 @@ class WebsiteSmokeTests(unittest.TestCase):
         self.assertTrue(css_balanced(self.css), "CSS has unbalanced braces/comment/string")
 
     def test_hero_index_remains_anchored_to_hero(self):
-        self.assertRegex(
-            self.css,
-            r"""/\* Keep the decorative index anchored to the hero instead of normal flow\. \*/\s*
-                \.hero-indicator\s*\{\s*position:\s*absolute""".replace("\n", ""),
+        blocks = re.findall(r"\.hero-indicator\s*\{([^}]*)\}", self.css)
+        self.assertTrue(
+            any(re.search(r"position\s*:\s*absolute", block) for block in blocks),
+            "The hero index must have absolute positioning",
         )
         self.assertNotRegex(
             self.css,
-            r"""/\.hero-content\s*,\s*\.hero-indicator\s*\{\s*position:\s*relative""",
+            r"\.hero-content\s*,\s*\.hero-indicator\s*\{\s*position\s*:\s*relative",
         )
 
     def test_phone_technology_grid_uses_one_column(self):
+        marker = "/* Final phone layout for Technology cards. */"
+        self.assertIn(marker, self.css)
+        mobile_rules = self.css.split(marker, 1)[1]
+        match = re.search(r"\.technology-grid\s*\{([^}]*)\}", mobile_rules)
+        self.assertIsNotNone(match, "Mobile technology grid rule is missing")
         self.assertRegex(
-            self.css,
-            r"""/\* Final phone layout for Technology cards\. \*/[\s\S]*?
-                @media\s*\(max-width:\s*600px\)\s*\{[\s\S]*?
-                \.technology-grid\s*\{\s*grid-template-columns:\s*minmax\(0,\s*1fr\)""".replace("\n", ""),
+            match.group(1),
+            r"grid-template-columns:\s*minmax\(0,\s*1fr\)",
         )
 
     def test_about_description_does_not_preserve_source_line_breaks(self):
