@@ -1178,9 +1178,14 @@ a:focus-visible {
 }
 
 /* Keep hero content above the video and overlay */
-.hero-content,
-.hero-indicator {
+.hero-content {
     position: relative;
+    z-index: 2;
+}
+
+/* Keep the decorative index anchored to the hero instead of normal flow. */
+.hero-indicator {
+    position: absolute;
     z-index: 2;
 }
 
@@ -1810,3 +1815,10 @@ video {
 .about-description {
     white-space: normal !important;
 }
+/* The virtualization card contains two vertically stacked logos. */
+@media (max-width: 600px) {
+    .technology-logo.virtualization-logos {
+        height: 100px;
+    }
+}
+
