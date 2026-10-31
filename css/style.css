@@ -1822,3 +1822,32 @@ video {
     }
 }
 
+
+/* ========================================
+   ACCESSIBILITY + SMALLEST-SCREEN FIXES
+======================================== */
+
+/* Text for assistive technology only (e.g. the service a "Discuss your requirements" link refers to). */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Original Galaxy Fold (280px): the longest unbreakable headline word was wider than the screen. */
+@media (max-width: 300px) {
+    .hero h1,
+    .section-heading h2,
+    .about-content h2,
+    .technology-heading h2,
+    .contact-content h2 {
+        font-size: clamp(26px, 9.2vw, 32px);
+    }
+}
